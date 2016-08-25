@@ -280,7 +280,7 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
     NSMutableArray * array = [NSMutableArray new];
     [cnameExcludeList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString * host = [(NSString *)obj lowercaseString];
-        if ([host containsString:@"://"]) {
+        if ([@"://" rangeOfString:host].location != NSNotFound) {
             NSString * trimHost = [host substringFromIndex:[host rangeOfString:@"://"].location + 3];
             [array addObject:trimHost];
         } else {
